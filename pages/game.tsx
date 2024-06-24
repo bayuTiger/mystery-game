@@ -156,6 +156,7 @@ const Game: React.FC = () => {
           {scenario.title}
         </h1>
         <p className="mb-6 text-gray-700">{scenario.description}</p>
+        <p className="mb-6 text-gray-700 font-bold">* 調査結果は下の「会話ログ」に溜まっていく *</p>
         <h2 className="text-3xl font-bold mb-4 text-center text-blue-800">
           登場人物
         </h2>
