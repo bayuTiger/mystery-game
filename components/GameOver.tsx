@@ -53,9 +53,7 @@ const GameOver: React.FC<GameOverProps> = ({
               正解です！見事に事件を解決しました。
             </span>
           ) : (
-            <span className="text-red-600">
-              残念ながら不正解です。
-            </span>
+            <span className="text-red-600">残念ながら不正解です。</span>
           )}
         </p>
         <p className="text-2xl mb-8 text-gray-700">
@@ -65,11 +63,14 @@ const GameOver: React.FC<GameOverProps> = ({
 
         {isCorrect && (
           <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-4 text-black">エンディング</h2>
-            <div className="text-left mb-4 text-black">
+            <h2 className="text-2xl font-bold mb-4 text-black-700">
+              エンディング
+            </h2>
+            <div className="text-left mb-4 text-black-600">
               {ending.dialogue.map((line, index) => (
-                <p key={index} className="mb-2">
-                  <strong>{line.speaker}:</strong> {line.text}
+                <p key={index} className="mb-2 text-black-600">
+                  <strong className="text-black-600">{line.speaker}:</strong>{" "}
+                  {line.text}
                 </p>
               ))}
             </div>
