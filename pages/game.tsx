@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useRecoilState } from "recoil";
 import { useRouter } from "next/router";
 import { gameStateAtom } from "../atoms/gameState";
@@ -99,7 +99,6 @@ const Game: React.FC = () => {
 
     // Simulating API call delay
     setTimeout(() => {
-      
       const isCorrect =
         accusedNPC.toLowerCase() === scenario.culprit.toLowerCase();
       const score = calculateScore(isCorrect, gameState.conversationCount);
@@ -112,7 +111,6 @@ const Game: React.FC = () => {
       }));
     }, 1000);
   };
-
 
   const handleSave = () => {
     setGameState((prev) => ({
@@ -132,14 +130,16 @@ const Game: React.FC = () => {
     }, 500);
   };
 
-  const getFilteredDialogs = () => {
-    if (dialogFilter === "all") {
-      return gameState.dialogHistory;
-    }
-    return gameState.dialogHistory.filter((dialog) =>
-      dialog.startsWith(dialogFilter)
-    );
-  };
+  const filteredAndReversedDialogs = useMemo(() => {
+    const filteredDialogs =
+      dialogFilter === "all"
+        ? gameState.dialogHistory
+        : gameState.dialogHistory.filter((dialog) =>
+            dialog.startsWith(dialogFilter)
+          );
+    return [...filteredDialogs].reverse();
+  }, [gameState.dialogHistory, dialogFilter]);
+  
 
   if (gameState.currentScene === "gameOver") {
     return (
@@ -278,16 +278,13 @@ const Game: React.FC = () => {
             </select>
           </div>
           <ul className="list-disc pl-5">
-            {getFilteredDialogs()
-              .reverse()
-              .map((dialog, index) => (
-                <li key={index} className="mb-1 text-gray-700">
-                  {dialog}
-                </li>
-              ))}
+            {filteredAndReversedDialogs.map((dialog, index) => (
+              <li key={index} className="mb-1 text-gray-700">
+                {dialog}
+              </li>
+            ))}
           </ul>
         </div>
-        
       </div>
     </Layout>
   );
