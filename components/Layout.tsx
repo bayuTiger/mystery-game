@@ -1,6 +1,8 @@
 import React from "react";
 import Head from "next/head";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -19,6 +21,7 @@ const Layout: React.FC<LayoutProps> = ({
     </Head>
     <main className="container mx-auto p-4">{children}</main>
     <Analytics />
+    <SpeedInsights />
   </div>
 );
 
