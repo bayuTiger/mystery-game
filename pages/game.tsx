@@ -17,7 +17,7 @@ import { resetGameState } from "../utils/gameState";
 const Game: React.FC = () => {
   const [gameState, setGameState] = useRecoilState(gameStateAtom);
   const [selectedNPC, setSelectedNPC] = useState<NPC | null>(null);
-  const [accusedNPCName, setAccusedNPCName] = useState("");
+  const [accusedNPC, setAccusedNPC] = useState("");
   const [showScenario, setShowScenario] = useState(false);
   const router = useRouter();
 
@@ -82,10 +82,10 @@ const Game: React.FC = () => {
   };
 
   const handleAccuse = () => {
-    if (!accusedNPCName.trim()) {
+    if (!accusedNPC.trim()) {
       setGameState((prev) => ({
         ...prev,
-        error: "犯人の名前を入力してください。",
+        error: "犯人の名前を選択してください。",
       }));
       return;
     }
@@ -98,8 +98,9 @@ const Game: React.FC = () => {
 
     // Simulating API call delay
     setTimeout(() => {
+      
       const isCorrect =
-        accusedNPCName.toLowerCase() === scenario.culprit.toLowerCase();
+        accusedNPC.toLowerCase() === scenario.culprit.toLowerCase();
       const score = calculateScore(isCorrect, gameState.conversationCount);
       setGameState((prev) => ({
         ...prev,
@@ -110,6 +111,7 @@ const Game: React.FC = () => {
       }));
     }, 1000);
   };
+
 
   const handleSave = () => {
     setGameState((prev) => ({
@@ -210,15 +212,18 @@ const Game: React.FC = () => {
           <h2 className="text-2xl font-semibold mb-2 text-yellow-800">
             犯人を告発
           </h2>
-          <input
-            id="accused-npc"
-            type="text"
-            value={accusedNPCName}
-            onChange={(e) => setAccusedNPCName(e.target.value)}
-            placeholder="犯人の名前を入力"
+          <select
+            value={accusedNPC}
+            onChange={(e) => setAccusedNPC(e.target.value)}
             className="border p-2 mr-2 rounded w-full sm:w-auto mb-2 sm:mb-0 text-gray-900 bg-white"
-            aria-label="犯人の名前"
-          />
+          >
+            <option value="">犯人を選択してください</option>
+            {scenario.npcs.map((npc) => (
+              <option key={npc.id} value={npc.name}>
+                {npc.name}
+              </option>
+            ))}
+          </select>
           <button
             onClick={handleAccuse}
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300 w-full sm:w-auto"
