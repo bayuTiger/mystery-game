@@ -268,7 +268,7 @@ const Game: React.FC = () => {
             >
               <option value="all">すべて</option>
               {scenario.npcs.map((npc) => (
-                <option key={npc.id} value={npc.name}>
+                <option key={npc.id} value={npc.name} className="text-gray-800">
                   {npc.name}
                 </option>
               ))}
