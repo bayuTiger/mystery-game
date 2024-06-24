@@ -106,7 +106,7 @@ const Game: React.FC = () => {
         ...prev,
         currentScene: "gameOver",
         score,
-        accusedNPC: accusedNPCName,
+        accusedNPC: accusedNPC,
         isLoading: false,
       }));
     }, 1000);
