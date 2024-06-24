@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import { Analytics } from "@vercel/analytics/react";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -17,6 +18,7 @@ const Layout: React.FC<LayoutProps> = ({
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <main className="container mx-auto p-4">{children}</main>
+    <Analytics />
   </div>
 );
 
