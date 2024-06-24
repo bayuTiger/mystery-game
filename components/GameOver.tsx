@@ -68,7 +68,7 @@ const GameOver: React.FC<GameOverProps> = ({
             </h2>
             <div className="text-left mb-4">
               {ending.dialogue.map((line, index) => (
-                <p key={index} className="mb-2 text-black-600">
+                <p key={index} className="mb-2 text-gray-600">
                   <strong className="text-gray-700">{line.speaker}:</strong>{" "}
                   {line.text}
                 </p>
