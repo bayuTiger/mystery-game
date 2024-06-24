@@ -136,6 +136,8 @@ const Game: React.FC = () => {
             setGameState(resetGameState());
             router.push("/");
           }}
+          hints={scenario.hints}
+          ending={scenario.ending}
         />
       </Layout>
     );
