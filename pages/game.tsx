@@ -154,6 +154,15 @@ const Game: React.FC = () => {
           {scenario.title}
         </h1>
         <p className="mb-6 text-gray-700">{scenario.description}</p>
+        <h2 className="text-3xl font-bold mb-4 text-center text-blue-800">
+          登場人物
+        </h2>
+        <p className="mb-6 text-gray-700">
+          中嶋駿介：ホテルの支配人 <br />
+          多久島由佳：清掃員 <br />
+          小栗旬：宝石商 <br />
+          松田志穂：ホテルの受付
+        </p>
 
         {gameState.isLoading && <Loading />}
 
