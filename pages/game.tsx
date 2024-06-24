@@ -218,12 +218,12 @@ const Game: React.FC = () => {
           </button>
         </div>
 
-        <button
+        {/* <button
           onClick={handleSave}
           className="mt-6 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded transition duration-300"
         >
           セーブ
-        </button>
+        </button> */}
 
         <div className="mt-6 bg-white p-4 rounded-lg shadow">
           <h2 className="text-2xl font-semibold mb-2 text-blue-700">
