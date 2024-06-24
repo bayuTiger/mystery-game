@@ -1,5 +1,5 @@
 export interface GameState {
-  currentScene: "intro" | "investigation" | "gameOver";
+  currentScene: "intro" | "investigation" | "gameOver" | "ending";
   conversationCount: number;
   dialogHistory: string[];
   score?: number;
@@ -25,4 +25,21 @@ export interface Scenario {
   description: string;
   npcs: NPC[];
   culprit: string;
+  ending: EndingScene;
+  hints: string[];
+}
+
+export interface EndingScene {
+  dialogue: EndingDialogue[];
+  bestStrategy: BestStrategy;
+}
+
+export interface EndingDialogue {
+  speaker: string;
+  text: string;
+}
+
+export interface BestStrategy {
+  choices: string[];
+  explanation: string;
 }

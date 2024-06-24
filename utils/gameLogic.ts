@@ -3,6 +3,6 @@ export const calculateScore = (
   conversationCount: number
 ): number => {
   let score = isCorrect ? 1000 : 0;
-  score -= conversationCount * 50;
+  score -= conversationCount * 20;
   return Math.max(score, 0);
 };
