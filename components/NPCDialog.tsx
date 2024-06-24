@@ -16,11 +16,11 @@ const NPCDialog: React.FC<NPCDialogProps> = ({ npc, onDialogueSelect }) => {
     >
       <div className="flex items-center mb-4">
         <Image
-          src={npc.image}
+          src={`/images/${npc.image}`}
           alt={npc.name}
-          width={80}
-          height={80}
-          className="rounded-full mr-4"
+          width={64}
+          height={64}
+          className="rounded-full"
         />
         <h2 id="npc-name" className="text-2xl font-semibold text-blue-700">
           {npc.name}との会話
