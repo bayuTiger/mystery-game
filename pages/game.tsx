@@ -77,6 +77,10 @@ const Game: React.FC = () => {
     }, 500);
   };
 
+  const handleReturnToLobby = () => {
+    setSelectedNPC(null);
+  };
+
   const handleAccuse = () => {
     if (!accusedNPCName.trim()) {
       setGameState((prev) => ({
@@ -159,6 +163,7 @@ const Game: React.FC = () => {
           <NPCDialog
             npc={selectedNPC}
             onDialogueSelect={handleDialogueSelect}
+            onReturnToLobby={handleReturnToLobby}
           />
         ) : (
           <div>

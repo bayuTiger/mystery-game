@@ -5,26 +5,39 @@ import { NPC, DialogueOption } from "../types";
 interface NPCDialogProps {
   npc: NPC;
   onDialogueSelect: (option: DialogueOption) => void;
+  onReturnToLobby: () => void; // 新しく追加したプロップ
 }
 
-const NPCDialog: React.FC<NPCDialogProps> = ({ npc, onDialogueSelect }) => {
+const NPCDialog: React.FC<NPCDialogProps> = ({
+  npc,
+  onDialogueSelect,
+  onReturnToLobby,
+}) => {
   return (
     <div
       className="bg-gray-100 p-4 rounded-lg"
       role="dialog"
       aria-labelledby="npc-name"
     >
-      <div className="flex items-center mb-4">
-        <Image
-          src={`/images/${npc.image}`}
-          alt={npc.name}
-          width={64}
-          height={64}
-          className="rounded-full"
-        />
-        <h2 id="npc-name" className="text-2xl font-semibold text-blue-700">
-          {npc.name}との会話
-        </h2>
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center">
+          <Image
+            src={`/images/${npc.image}`}
+            alt={npc.name}
+            width={64}
+            height={64}
+            className="rounded-full mr-4"
+          />
+          <h2 id="npc-name" className="text-2xl font-semibold text-blue-700">
+            {npc.name}との会話
+          </h2>
+        </div>
+        <button
+          onClick={onReturnToLobby}
+          className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded transition duration-300"
+        >
+          ロビーに戻る
+        </button>
       </div>
       <ul className="space-y-2">
         {npc.dialogues.map((option, index) => (

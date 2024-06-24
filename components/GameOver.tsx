@@ -63,13 +63,13 @@ const GameOver: React.FC<GameOverProps> = ({
 
         {isCorrect && (
           <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-4 text-black-700">
+            <h2 className="text-2xl font-bold mb-4 text-gray-800">
               エンディング
             </h2>
-            <div className="text-left mb-4 text-black-600">
+            <div className="text-left mb-4">
               {ending.dialogue.map((line, index) => (
                 <p key={index} className="mb-2 text-black-600">
-                  <strong className="text-black-600">{line.speaker}:</strong>{" "}
+                  <strong className="text-gray-700">{line.speaker}:</strong>{" "}
                   {line.text}
                 </p>
               ))}
