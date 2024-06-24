@@ -19,6 +19,7 @@ const Game: React.FC = () => {
   const [selectedNPC, setSelectedNPC] = useState<NPC | null>(null);
   const [accusedNPC, setAccusedNPC] = useState("");
   const [showScenario, setShowScenario] = useState(false);
+  const [dialogFilter, setDialogFilter] = useState("all");
   const router = useRouter();
 
   useEffect(() => {
@@ -129,6 +130,15 @@ const Game: React.FC = () => {
       }));
       alert("ゲームの進行状況が保存されました。");
     }, 500);
+  };
+
+  const getFilteredDialogs = () => {
+    if (dialogFilter === "all") {
+      return gameState.dialogHistory;
+    }
+    return gameState.dialogHistory.filter((dialog) =>
+      dialog.startsWith(dialogFilter)
+    );
   };
 
   if (gameState.currentScene === "gameOver") {
@@ -246,14 +256,38 @@ const Game: React.FC = () => {
           <h2 className="text-2xl font-semibold mb-2 text-blue-700">
             会話ログ
           </h2>
+          <div className="mb-4">
+            <label
+              htmlFor="dialog-filter"
+              className="block text-sm font-medium text-gray-700"
+            >
+              フィルター:
+            </label>
+            <select
+              id="dialog-filter"
+              value={dialogFilter}
+              onChange={(e) => setDialogFilter(e.target.value)}
+              className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+            >
+              <option value="all">すべて</option>
+              {scenario.npcs.map((npc) => (
+                <option key={npc.id} value={npc.name}>
+                  {npc.name}
+                </option>
+              ))}
+            </select>
+          </div>
           <ul className="list-disc pl-5">
-            {[...gameState.dialogHistory].reverse().map((dialog, index) => (
-              <li key={index} className="mb-1 text-gray-700">
-                {dialog}
-              </li>
-            ))}
+            {getFilteredDialogs()
+              .reverse()
+              .map((dialog, index) => (
+                <li key={index} className="mb-1 text-gray-700">
+                  {dialog}
+                </li>
+              ))}
           </ul>
         </div>
+        
       </div>
     </Layout>
   );
