@@ -131,7 +131,7 @@ const Game: React.FC = () => {
 
   if (gameState.currentScene === "gameOver") {
     return (
-      <Layout title="Mystery Game - Game Over">
+      <Layout title="探偵事務所あなた - Game Over">
         <GameOver
           score={gameState.score || 0}
           accusedNPC={gameState.accusedNPC || ""}
@@ -148,7 +148,7 @@ const Game: React.FC = () => {
   }
 
   return (
-    <Layout title="Mystery Game - Investigation">
+    <Layout title="探偵事務所あなた - Investigation">
       <div className="bg-white p-6 rounded-lg shadow-lg">
         <h1 className="text-3xl font-bold mb-4 text-center text-blue-800">
           {scenario.title}

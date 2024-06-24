@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 
 const Home: React.FC = () => {
   return (
-    <Layout title="Mystery Game - Home">
+    <Layout title="探偵事務所あなた - Home">
       <div className="flex flex-col items-center justify-center min-h-screen">
         <h1 className="text-4xl font-bold mb-8 text-blue-800">
           探偵事務所あなた

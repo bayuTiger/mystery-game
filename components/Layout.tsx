@@ -9,7 +9,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({
   children,
-  title = "Mystery Game",
+  title = "探偵事務所あなた",
 }) => (
   <div className="min-h-screen bg-gray-100">
     <Head>
