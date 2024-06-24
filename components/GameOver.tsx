@@ -82,12 +82,14 @@ const GameOver: React.FC<GameOverProps> = ({
             </button>
             {showBestStrategy && (
               <div className="text-left">
-                <h3 className="text-xl font-bold mb-2">
+                <h3 className="text-xl font-bold mb-2 text-gray-600">
                   最高得点を取るための選択肢:
                 </h3>
                 <ul className="list-disc list-inside mb-4">
                   {ending.bestStrategy.choices.map((choice, index) => (
-                    <li key={index}>{choice}</li>
+                    <li key={index} className="text-gray-600">
+                      {choice}
+                    </li>
                   ))}
                 </ul>
                 <p className="whitespace-pre-line">
