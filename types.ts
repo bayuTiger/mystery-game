@@ -26,5 +26,3 @@ export interface Scenario {
   npcs: NPC[];
   culprit: string;
 }
-
-

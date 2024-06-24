@@ -1,3 +1,5 @@
+import { GameState } from "../types";
+
 export const saveGameState = (state: GameState): void => {
   if (typeof window !== "undefined") {
     try {
